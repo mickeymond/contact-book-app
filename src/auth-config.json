@@ -1,4 +1,6 @@
 {
   "domain": "mikebuildingprojects.auth0.com",
-  "clientId": "btj4z9Cws0KgrPi6NASNNrZ81SP9J2rd"
+  "clientId": "btj4z9Cws0KgrPi6NASNNrZ81SP9J2rd",
+  "redirectUrl": "http://localhost:3000",
+  "audience": "https://mikebuildingprojects.auth0.com/api/v2/"
 }
