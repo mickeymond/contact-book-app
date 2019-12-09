@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Card, Icon, Avatar, Col, Button, Row, Spin, Alert } from 'antd/es';
+import { Layout, Card, Icon, Avatar, Col, Button, Row, Spin, Alert, notification } from 'antd/es';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Contact } from '../models/contact';
 import { Link } from 'react-router-dom'
@@ -36,13 +36,18 @@ const Home: React.FC = () => {
             <Card
               actions={[
                 <Link to={`/view/${contact.id}`}><Icon type="eye" key="eye" /></Link>,
-                <Icon type="edit" key="edit" />,
+                <Link to={`/edit/${contact.id}`}><Icon type="edit" key="edit" /></Link>,
                 <Icon
                   type="delete"
                   style={{ color: 'red' }}
                   onClick={e => {
                     deleteContact({ variables: { id: contact.id } })
-                    .catch(console.log);
+                    .catch(error => {
+                      notification.error({
+                        message: error.name,
+                        description: error.message
+                      });
+                    });
                   }}
                   key="delete" />,
               ]}

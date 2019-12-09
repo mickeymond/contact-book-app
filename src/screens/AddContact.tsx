@@ -59,9 +59,7 @@ const AddContact: React.FC = (props) => {
               />
             </Form.Item>
             <Form.Item>
-              <Button type="primary" htmlType="submit" className="login-form-button">
-                Add Contact
-          </Button>
+              <Button type="primary" htmlType="submit" className="login-form-button">Add Contact</Button>
             </Form.Item>
           </Form>
         </Col>

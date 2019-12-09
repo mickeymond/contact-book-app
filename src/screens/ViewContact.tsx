@@ -1,8 +1,7 @@
 import React from 'react';
 import { Layout, Form, Input, Icon, Row, Col, List, Typography, Descriptions, Spin, Alert } from 'antd/es';
-import { useAuth0 } from '../auth/react-auth0-spa';
 import { useMutation, useQuery } from '@apollo/react-hooks';
-import { useHistory, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import { ADD_PHONE, ADD_EMAIL, DELETE_PHONE, DELETE_EMAIL } from '../mutations';
 import { FETCH_CONTACT } from '../queries';
 import { Phone } from '../models/phone';
@@ -10,8 +9,6 @@ import { Email } from '../models/email';
 import { Contact } from '../models/contact';
 
 const ViewContact: React.FC = (props) => {
-  const { user } = useAuth0();
-
   const { id } = useParams();
   const { loading, error, data } = useQuery(FETCH_CONTACT, { variables: { id } });
 
@@ -56,7 +53,7 @@ const ViewContact: React.FC = (props) => {
     <Layout.Content style={{ padding: '20px 50px', textAlign: 'center' }}>
       <Row>
         <Col sm={12} offset={6}>
-          <Descriptions style={{margin: '20px 0px'}} title="Contact Info">
+          <Descriptions style={{margin: '20px 0px'}} title="Contact Details">
             <Descriptions.Item label="First Name">{contact.first_name}</Descriptions.Item>
             <Descriptions.Item label="Last Name">{contact.last_name}</Descriptions.Item>
           </Descriptions>

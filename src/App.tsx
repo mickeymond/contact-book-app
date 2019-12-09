@@ -12,6 +12,7 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 import AddContact from './screens/AddContact';
 import ViewContact from './screens/ViewContact';
+import EditContact from './screens/EditContact';
 
 const App: React.FC = () => {
   const { loading, getTokenSilently, user } = useAuth0();
@@ -49,6 +50,7 @@ const App: React.FC = () => {
           <Route exact path='/' component={Home} />
           <Route exact path='/add' component={AddContact} />
           <Route exact path='/view/:id' component={ViewContact} />
+          <Route exact path='/edit/:id' component={EditContact} />
         </Switch>
       </BrowserRouter>
     </ApolloProvider>

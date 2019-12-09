@@ -20,6 +20,26 @@ mutation addContact(
 }
 `;
 
+export const EDIT_CONTACT = gql`
+mutation editContact($id: Int!, $first_name: String!, $last_name: String!, $twitter_username: String!) {
+  update_contacts(
+    where: {id: {_eq: $id}},
+    _set: {
+      first_name: $first_name,
+      last_name: $last_name,
+      twitter_username: $twitter_username
+    }
+  ) {
+    returning {
+      id
+      first_name
+      last_name
+      twitter_username
+    }
+  }
+}
+`;
+
 export const DELETE_CONTACT = gql`
 mutation deleteContact($id: Int!) {
   delete_contacts(where: { id: { _eq: $id } }) {
