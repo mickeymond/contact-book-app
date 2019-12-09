@@ -40,3 +40,36 @@ mutation addPhone($contact_id: Int!, $number: String!) {
   }
 }
 `;
+
+export const DELETE_PHONE = gql`
+mutation deletePhone($id: Int!) {
+  delete_phones(where: {id: {_eq: $id}}) {
+    returning {
+      id
+    }
+  }
+}
+`;
+
+export const ADD_EMAIL = gql`
+mutation addEmail($contact_id: Int!, $address: String!) {
+  insert_emails(objects: [{
+    contact_id: $contact_id,
+    address: $address
+  }]) {
+    returning {
+      id
+    }
+  }
+}
+`;
+
+export const DELETE_EMAIL = gql`
+mutation deleteEmail($id: Int!) {
+  delete_emails(where: {id: {_eq: $id}}) {
+    returning {
+      id
+    }
+  }
+}
+`;

@@ -3,7 +3,7 @@ import { Layout, Form, Input, Icon, Row, Col, List, Typography, Descriptions, Sp
 import { useAuth0 } from '../auth/react-auth0-spa';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useHistory, useParams } from 'react-router';
-import { ADD_PHONE } from '../mutations';
+import { ADD_PHONE, ADD_EMAIL, DELETE_PHONE, DELETE_EMAIL } from '../mutations';
 import { FETCH_CONTACT } from '../queries';
 import { Phone } from '../models/phone';
 import { Email } from '../models/email';
@@ -16,6 +16,18 @@ const ViewContact: React.FC = (props) => {
   const { loading, error, data } = useQuery(FETCH_CONTACT, { variables: { id } });
 
   const [ addPhone ] = useMutation(ADD_PHONE, {
+    refetchQueries: [{ query: FETCH_CONTACT, variables: { id } }]
+  });
+
+  const [ deletePhone ] = useMutation(DELETE_PHONE, {
+    refetchQueries: [{ query: FETCH_CONTACT, variables: { id } }]
+  });
+
+  const [ addEmail ] = useMutation(ADD_EMAIL, {
+    refetchQueries: [{ query: FETCH_CONTACT, variables: { id } }]
+  });
+
+  const [ deleteEmail ] = useMutation(DELETE_EMAIL, {
     refetchQueries: [{ query: FETCH_CONTACT, variables: { id } }]
   });
 
@@ -78,6 +90,8 @@ const ViewContact: React.FC = (props) => {
                       type="delete"
                       style={{ color: 'red', position: 'absolute', right: '10px' }}
                       onClick={e => {
+                        deletePhone({ variables: { id: item.id } })
+                        .catch(console.log);
                       }}
                       key="delete" />
                   }>
@@ -93,7 +107,14 @@ const ViewContact: React.FC = (props) => {
               value={email}
               onChange={e => setEmail(e.target.value)}
               onSearch={value => {
-                setEmail('');
+                addEmail({
+                  variables: {
+                    contact_id: contact.id,
+                    address: value
+                  }
+                })
+                .catch(console.log)
+                .finally(() => setEmail(''));
               }}
               enterButton={<Icon type="plus" />}
             />
@@ -109,6 +130,8 @@ const ViewContact: React.FC = (props) => {
                       type="delete"
                       style={{ color: 'red', position: 'absolute', right: '10px' }}
                       onClick={e => {
+                        deleteEmail({ variables: { id: item.id } })
+                        .catch(console.log);
                       }}
                       key="delete" />
                   }>
