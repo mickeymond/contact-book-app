@@ -18,10 +18,10 @@ const NavBar = () => {
           ),
           isAuthenticated && <Button key="2" type="danger" onClick={() => {
             localStorage.clear();
-            logout();
+            logout({ returnTo: process.env.REACT_APP_REDIRECT_URL });
           }}>Log out</Button>,
         ]}
-        avatar={{src: 'img/contact.png'}}
+        avatar={{src: 'https://icon-library.net/images/android-contacts-icon-png/android-contacts-icon-png-22.jpg'}}
       >
       </PageHeader>
     </div>

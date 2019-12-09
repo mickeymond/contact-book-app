@@ -25,7 +25,7 @@ const App: React.FC = () => {
   }
 
   const client = new ApolloClient({
-    uri: 'https://contact-book-app-api.herokuapp.com/v1/graphql',
+    uri: process.env.REACT_APP_API_URL,
     request: async (operation) => {
       try {
         const token = await getTokenSilently();

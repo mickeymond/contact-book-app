@@ -4,14 +4,13 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Auth0Provider } from "./auth/react-auth0-spa";
-import config from "./auth-config.json";
 
 ReactDOM.render(
   <Auth0Provider
-    domain={config.domain}
-    client_id={config.clientId}
-    redirect_uri={config.redirectUrl}
-    audience={config.audience}
+    domain={process.env.REACT_APP_DOMAIN}
+    client_id={process.env.REACT_APP_CLIENT_ID}
+    redirect_uri={process.env.REACT_APP_REDIRECT_URL}
+    audience={process.env.REACT_APP_AUDIENCE}
   >
     <App />
   </Auth0Provider>,
