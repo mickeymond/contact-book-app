@@ -24,5 +24,4 @@ yarn-error.log*
 jwt-config.json
 
 #envs
-.env.development
 .env.production

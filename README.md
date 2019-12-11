@@ -1,5 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Running the project locally
+
+1. Clone the repository by running `git clone https://github.com/mickeymond/contact-book-app.git`
+2. Navigate into project folder `cd contact-book-app`
+3. Install dependencies `npm install` or `yarn install`
+4. Serve the project `npm start` or `yarn start`
+5. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
 ## Available Scripts
 
 In the project directory, you can run:
