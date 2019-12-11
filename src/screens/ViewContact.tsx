@@ -139,7 +139,9 @@ const ViewContact: React.FC = (props) => {
           </Form.Item>
           <Descriptions style={{margin: '20px 0px'}}>
             <Descriptions.Item label="Twitter Username">
-              {contact.twitter_username ? contact.twitter_username : 'Set Twitter Username'}
+              {contact.twitter_username ?
+              <a href={`https://twitter.com/${contact.twitter_username}`} target="blank">{contact.twitter_username}</a> :
+              'Set Twitter Username'}
             </Descriptions.Item>
           </Descriptions>
         </Col>

@@ -59,7 +59,9 @@ const Home: React.FC = () => {
                   `https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png`
                 }/>}
                 title={`${contact.first_name} ${contact.last_name}`}
-                description={contact.twitter_username ? contact.twitter_username : 'Set Twitter Username'}
+                description={contact.twitter_username ?
+                <a href={`https://twitter.com/${contact.twitter_username}`} target="blank">{contact.twitter_username}</a> :
+                'Set Twitter Username'}
               />
             </Card>
           </Col>

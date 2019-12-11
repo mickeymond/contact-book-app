@@ -2,7 +2,7 @@ import { gql } from 'apollo-boost';
 
 export const FETCH_CONTACTS = gql`
 query {
-  contacts {
+  contacts(order_by: {first_name: asc}) {
     id
     first_name
     last_name
